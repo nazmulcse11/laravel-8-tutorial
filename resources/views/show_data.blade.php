@@ -21,6 +21,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Status</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Create Date</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,9 @@
                            <td>{{ Str::limit($post->title,10) }}</td>
                            <td>{{ $post->status }}</td>
                            <td>{{ Str::limit($post->description,50) }}</td>
+                           <td>
+                             {{ $post->created_at->toDateString() }}
+                            </td>
                        </tr>
                       @endforeach 
                     </tbody>
