@@ -14,6 +14,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-12">
+              <a href="{{ url('add-data') }}" class="btn btn-success my-3">Add Data</a>
                 <table class="table table-bordered">
                     <thead>
                       <tr>

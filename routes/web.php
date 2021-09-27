@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/show-data',[PostController::class,'showData']);
+Route::get('/add-data',[PostController::class,'addData']);
+Route::post('/store-data',[PostController::class,'storeData']);
+
