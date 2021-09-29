@@ -15,24 +15,24 @@
         <div class="row">
             <div class="col-sm-12">
               <a href="{{ url('show-data') }}" class="btn btn-success my-3">Show Data</a>
-                <form action="{{ url('/store-data') }}" method="post">
+                <form action="{{ url('/store-edit-data/'.$post->id) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" value="{{ $post->title }}" class="form-control">
                         @error('title')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="description">Description</label>
-                        <textarea name="description" class="form-control" cols="30" rows="6"></textarea>
+                        <textarea name="description" class="form-control" cols="30" rows="6">{{ $post->title }}</textarea>
                         @error('description')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Store Data" class="btn btn-success mt-5">
+                        <input type="submit" value="Update Data" class="btn btn-success mt-5">
                     </div>
                 </form>
             </div>

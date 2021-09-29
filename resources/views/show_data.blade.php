@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <title>Hello, world!</title>
   </head>
   <body>
@@ -23,6 +23,7 @@
                         <th scope="col">Status</th>
                         <th scope="col">Description</th>
                         <th scope="col">Create Date</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,10 @@
                            <td>
                              {{ $post->created_at->toDateString() }}
                             </td>
+                            <td>
+                              <a href="{{ url('edit-data/'.$post->id) }}" class="btn btn-sm btn-success">Edit</a>
+                              <a href="" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
                        </tr>
                       @endforeach 
                     </tbody>
@@ -44,6 +49,9 @@
         </div>
     </div>
 
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>
