@@ -71,4 +71,11 @@ class PostController extends Controller
             return redirect('/show-data');
         }
     }
+
+    //delete data
+    public function deleteData($id=null){
+        Post::findOrFail($id)->delete();
+        Toastr::success('Post Successfully Deleted', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
+            return redirect()->back();
+    }
 }

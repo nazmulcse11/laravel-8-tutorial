@@ -38,7 +38,7 @@
                             </td>
                             <td>
                               <a href="{{ url('edit-data/'.$post->id) }}" class="btn btn-sm btn-success">Edit</a>
-                              <a href="" class="btn btn-sm btn-danger">Delete</a>
+                              <a href="{{ url('delete-data/'.$post->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                        </tr>
                       @endforeach 
