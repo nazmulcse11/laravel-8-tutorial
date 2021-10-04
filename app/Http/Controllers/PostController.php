@@ -10,7 +10,8 @@ class PostController extends Controller
 {
     public function showData(){
          $posts = Post::latest()->simplePaginate(10);
-        return view('show_data',compact('posts'));
+         $trashPosts = Post::onlyTrashed()->latest()->simplePaginate(10);
+        return view('show_data',compact('posts','trashPosts'));
     }
 
     public function addData(){
@@ -77,5 +78,17 @@ class PostController extends Controller
         Post::findOrFail($id)->delete();
         Toastr::success('Post Successfully Deleted', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
             return redirect()->back();
+    }
+
+    public function restoreData($id){
+        Post::withTrashed()->findOrFail($id)->restore();
+        Toastr::success('Post Successfully restored', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
+            return redirect()->back(); 
+    }
+
+    public function pDeleteData($id=null){
+        Post::onlyTrashed()->findOrFail($id)->forceDelete();
+        Toastr::success('Post permanently Deleted', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
+        return redirect()->back();
     }
 }

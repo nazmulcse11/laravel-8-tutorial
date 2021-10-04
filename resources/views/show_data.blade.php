@@ -47,6 +47,42 @@
                   {{ $posts->links() }}
             </div>
         </div>
+
+        {{-- //soft delete --}}
+        <div class="row my-5">
+          <div class="col-sm-12">
+            <a href="#" class="btn btn-success my-3">Trash List</a>
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Create Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($trashPosts as $key=>$post)
+                     <tr>
+                         <td>{{ $key+1 }}</td>
+                         <td>{{ Str::limit($post->title,10) }}</td>
+                         <td>{{ $post->status }}</td>
+                         <td>{{ Str::limit($post->description,50) }}</td>
+                         <td>
+                           {{ $post->created_at->toDateString() }}
+                          </td>
+                          <td>
+                            <a href="{{ url('restore-data/'.$post->id) }}" class="btn btn-sm btn-success">Restore</a>
+                            <a href="{{ url('permanent-delete-data/'.$post->id) }}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
+                          </td>
+                     </tr>
+                    @endforeach 
+                  </tbody>
+                </table>
+          </div>
+      </div>
     </div>
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
