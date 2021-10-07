@@ -31,7 +31,13 @@
                        <tr>
                            <td>{{ $key+1 }}</td>
                            <td>{{ Str::limit($post->title,10) }}</td>
-                           <td>{{ $post->status }}</td>
+                           <td>
+                             @if($post->status==1)
+                             <a href="{{ url('change-status/'.$post->id) }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-success">Active</a>
+                             @else
+                             <a href="{{ url('change-status/'.$post->id) }}" onclick="return confirm('Are you Sure?')" class="btn btn-sm btn-danger">Inactive</a>
+                             @endif
+                           </td>
                            <td>{{ Str::limit($post->description,50) }}</td>
                            <td>
                              {{ $post->created_at->toDateString() }}

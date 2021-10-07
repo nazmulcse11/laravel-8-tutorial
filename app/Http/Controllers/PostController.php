@@ -91,4 +91,17 @@ class PostController extends Controller
         Toastr::success('Post permanently Deleted', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
         return redirect()->back();
     }
+
+    //change status
+    public function changeStatus($id){
+        $getStatus = Post::select('status')->where('id',$id)->first();
+        if($getStatus->status==1){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+        Post::where('id',$id)->update(['status'=>$status]);
+        Toastr::success('Status Successfully Changed', 'Success', ["positionClass" => "toast-top-right","closeButton"=> "true","progressBar"=> "true"]);
+        return redirect()->back();
+    }
 }

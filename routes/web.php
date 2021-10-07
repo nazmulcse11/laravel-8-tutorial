@@ -27,3 +27,5 @@ Route::get('/delete-data/{id}',[PostController::class,'deleteData']);
 Route::get('/restore-data/{id}',[PostController::class,'restoreData']);
 Route::get('/permanent-delete-data/{id}',[PostController::class,'pDeleteData']);
 
+Route::get('/change-status/{id}',[PostController::class,'changeStatus']);
+
