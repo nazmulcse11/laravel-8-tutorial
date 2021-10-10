@@ -55,6 +55,7 @@
         </div>
 
         {{-- //soft delete --}}
+        @if(!empty($trashPosts))
         <div class="row my-5">
           <div class="col-sm-12">
             <a href="#" class="btn btn-success my-3">Trash List</a>
@@ -90,6 +91,7 @@
           </div>
       </div>
     </div>
+    @endif
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
