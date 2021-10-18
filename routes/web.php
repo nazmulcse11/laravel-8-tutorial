@@ -1,10 +1,19 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Person;
 
+
+app()->bind('getName',Person::class);
 Route::get('/', function () {
+    // dd(app());
+    $name = app()->make('getName');
+    $name->setName('Web Journey');
+    echo $name->getName();die;
     return view('welcome');
 });
+
+
 
 Route::get('/show-data',[PostController::class,'showData']);
 Route::get('/add-data',[PostController::class,'addData']);
