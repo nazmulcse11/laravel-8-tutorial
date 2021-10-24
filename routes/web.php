@@ -1,10 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Person;
 
 
-app()->bind('getName',Person::class);
+
 Route::get('/', function () {
     // dd(app());
     $name = app()->make('getName');
